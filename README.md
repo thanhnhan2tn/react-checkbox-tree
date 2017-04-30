@@ -92,6 +92,7 @@ class Widget extends React.Component {
 | `nodes`            | array    | **Required**. Specifies the tree nodes and their children.                                       |             |
 | `checked`          | array    | An array of checked node values.                                                                 | `[]`        |
 | `expanded`         | array    | An array of expanded node values.                                                                | `[]`        |
+| `expandedAll`         | bool    | If true, all node will expanded.                                                                | `[]`        |
 | `onCheck`          | function | onCheck handler: `function(checked) {}`                                                          | `() => {}`  |
 | `onExpand`         | function | onExpand handler: `function(expanded) {}`                                                        | `() => {}` |
 | `name`             | string   | Optional name for the hidden `<input>` element.                                                  | `undefined` |
