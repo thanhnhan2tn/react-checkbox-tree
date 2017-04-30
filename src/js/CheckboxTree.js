@@ -11,6 +11,7 @@ class CheckboxTree extends React.Component {
 
 		checked: PropTypes.arrayOf(React.PropTypes.string),
 		expanded: PropTypes.arrayOf(React.PropTypes.string),
+		expandedAll: PropTypes.bool,
 		name: PropTypes.string,
 		nameAsArray: PropTypes.bool,
 		optimisticToggle: PropTypes.bool,
@@ -21,6 +22,7 @@ class CheckboxTree extends React.Component {
 	static defaultProps = {
 		checked: [],
 		expanded: [],
+		expandedAll: false,
 		name: undefined,
 		nameAsArray: false,
 		nodes: [],
@@ -51,13 +53,13 @@ class CheckboxTree extends React.Component {
 	}
 
 	getFormattedNodes(nodes) {
-		const { checked, expanded } = this.props;
+		const { checked, expanded, expandedAll } = this.props;
 
 		return nodes.map((node) => {
 			const formatted = { ...node };
 
 			formatted.checked = checked.indexOf(node.value) > -1;
-			formatted.expanded = expanded.indexOf(node.value) > -1;
+			formatted.expanded = expandedAll || expanded.indexOf(node.value) > -1;
 
 			if (Array.isArray(node.children) && node.children.length > 0) {
 				formatted.children = this.getFormattedNodes(formatted.children);
